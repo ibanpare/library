@@ -47,3 +47,5 @@ addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "read");
 addBookToLibrary("1984", "George Orwell", 328, "unread");
 addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, "read");
 addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 277, "unread");
+
+displayBooks(myLibrary);
