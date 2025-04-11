@@ -8,21 +8,25 @@ function Book(title, author, pages, read) {
   this.id = crypto.randomUUID();
 }
 
+// Adds a new Book object to the library array
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
 }
 
+// Show the modal form when the "Add New Book" button is clicked
 const addNewBookButton = document.querySelector(".add-new");
 const dialog = document.querySelector("dialog");
 addNewBookButton.addEventListener("click", () => dialog.showModal());
 
+// Form inputs and container for rendering book cards
 const bookContainer = document.querySelector(".book-grid");
 const bookTitleInput = document.querySelector("input[id=book_title]");
 const bookAuthorInput = document.querySelector("input[id=book_author]");
 const bookPageInput = document.querySelector("input[id=book_pages]");
 const bookStatusInput = document.querySelector("input[id=book_status]");
 
+// Handle new book submission from modal form
 const submitNewBook = document.querySelector(".submit-book");
 submitNewBook.addEventListener("click", (event) => {
     event.preventDefault();
@@ -31,6 +35,7 @@ submitNewBook.addEventListener("click", (event) => {
     dialog.close();
 })
 
+// Generate visual cards for each book so users can see their library on the page
 function displayBooks(libraryArray) {
   for (const book of myLibrary) {
     const bookCard = document.createElement("div");
@@ -59,9 +64,11 @@ function displayBooks(libraryArray) {
   }
 }
 
+// Pre-populate the library with some books for testing purposes
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "read");
 addBookToLibrary("1984", "George Orwell", 328, "unread");
 addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, "read");
 addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 277, "unread");
 
+// Render the initial book list
 displayBooks(myLibrary);
