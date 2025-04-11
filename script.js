@@ -13,6 +13,10 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook);
 }
 
+const addNewBookButton = document.querySelector(".add-new");
+const dialog = document.querySelector("dialog");
+addNewBookButton.addEventListener("click", () => dialog.showModal());
+
 const bookContainer = document.querySelector(".book-grid");
 
 function displayBooks(libraryArray) {
