@@ -18,6 +18,18 @@ const dialog = document.querySelector("dialog");
 addNewBookButton.addEventListener("click", () => dialog.showModal());
 
 const bookContainer = document.querySelector(".book-grid");
+const bookTitleInput = document.querySelector("input[id=book_title]");
+const bookAuthorInput = document.querySelector("input[id=book_author]");
+const bookPageInput = document.querySelector("input[id=book_pages]");
+const bookStatusInput = document.querySelector("input[id=book_status]");
+
+const submitNewBook = document.querySelector(".submit-book");
+submitNewBook.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log("what now");
+    addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, bookPageInput.value, bookStatusInput.value)
+    dialog.close();
+})
 
 function displayBooks(libraryArray) {
   for (const book of myLibrary) {
