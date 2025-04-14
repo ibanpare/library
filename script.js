@@ -31,7 +31,8 @@ const submitNewBook = document.querySelector(".submit-book");
 submitNewBook.addEventListener("click", (event) => {
     event.preventDefault();
     console.log("what now");
-    addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, bookPageInput.value, bookStatusInput.value)
+    const readNewBook = bookStatusInput.checked ? "read" : "not read";
+    addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, bookPageInput.value, readNewBook)
     dialog.close();
     cleanLibrary()
     displayBooks(myLibrary);
