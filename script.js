@@ -33,6 +33,8 @@ submitNewBook.addEventListener("click", (event) => {
     console.log("what now");
     addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, bookPageInput.value, bookStatusInput.value)
     dialog.close();
+    cleanLibrary()
+    displayBooks(myLibrary);
 })
 
 // Generate visual cards for each book so users can see their library on the page
@@ -62,6 +64,11 @@ function displayBooks(libraryArray) {
     bookRead.textContent = book.read;
     bookRead.classList.add("book-read");
   }
+}
+
+function cleanLibrary() {
+    const allCards = document.querySelectorAll(".book-card");
+    allCards.forEach((element) => element.remove());
 }
 
 // Pre-populate the library with some books for testing purposes
