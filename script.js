@@ -64,6 +64,16 @@ function displayBooks(libraryArray) {
     bookCard.appendChild(bookRead);
     bookRead.textContent = book.read;
     bookRead.classList.add("book-read");
+
+    const removeBook = document.createElement("button");
+    bookCard.appendChild(removeBook);
+    removeBook.textContent = "Remove Book"
+    removeBook.classList.add("remove-button");
+
+    const readBook = document.createElement("button");
+    bookCard.appendChild(readBook);
+    readBook.textContent = "Read/Unread"
+    readBook.classList.add("read-button");
   }
 }
 
