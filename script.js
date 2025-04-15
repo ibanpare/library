@@ -44,6 +44,7 @@ function displayBooks(libraryArray) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
     bookContainer.appendChild(bookCard);
+    bookCard.setAttribute("data-id", book.id)
 
     const bookTitle = document.createElement("p");
     bookCard.appendChild(bookTitle);
@@ -69,11 +70,23 @@ function displayBooks(libraryArray) {
     bookCard.appendChild(removeBook);
     removeBook.textContent = "Remove Book"
     removeBook.classList.add("remove-button");
+    removeBook.setAttribute("data-id", book.id)
 
     const readBook = document.createElement("button");
     bookCard.appendChild(readBook);
     readBook.textContent = "Read/Unread"
     readBook.classList.add("read-button");
+    removeBook.setAttribute("data-id", book.id)
+    removeBook.addEventListener("click", (e) => {
+        const myId = e.target.getAttribute("data-id");
+        myLibrary.forEach((item)=> {
+            if(item.id == myId) {
+                myLibrary.pop(item);
+                cleanLibrary()
+                displayBooks()
+            }
+        })
+    })
   }
 }
 
