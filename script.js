@@ -6,6 +6,11 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.id = crypto.randomUUID();
+  this.changeStatus = function() {
+    if(this.read === "read") {
+        this.read = "unread"
+    } else this.read = "read";
+  }
 }
 
 // Adds a new Book object to the library array
@@ -71,12 +76,6 @@ function displayBooks(libraryArray) {
     removeBook.textContent = "Remove Book"
     removeBook.classList.add("remove-button");
     removeBook.setAttribute("data-id", book.id)
-
-    const readBook = document.createElement("button");
-    bookCard.appendChild(readBook);
-    readBook.textContent = "Read/Unread"
-    readBook.classList.add("read-button");
-    removeBook.setAttribute("data-id", book.id)
     removeBook.addEventListener("click", (e) => {
         const myId = e.target.getAttribute("data-id");
         myLibrary.forEach((item)=> {
@@ -86,6 +85,19 @@ function displayBooks(libraryArray) {
                 displayBooks()
             }
         })
+    })
+
+    const readBook = document.createElement("button");
+    bookCard.appendChild(readBook);
+    readBook.textContent = "Read/Unread"
+    readBook.classList.add("read-button");
+    readBook.setAttribute("data-id", book.id)
+    readBook.addEventListener("click", (e) => {
+        const myId = e.target.getAttribute("data-id");
+        const myBook = myLibrary.find((element) => element.id == myId);
+        myBook.changeStatus();
+        cleanLibrary();
+        displayBooks(myLibrary);
     })
   }
 }
