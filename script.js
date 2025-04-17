@@ -73,9 +73,14 @@ function displayBooks(libraryArray) {
 
     const removeBook = document.createElement("button");
     bookCard.appendChild(removeBook);
-    removeBook.textContent = "Remove Book"
     removeBook.classList.add("remove-button");
     removeBook.setAttribute("data-id", book.id)
+
+    const trashIcon = document.createElement("span");
+    removeBook.appendChild(trashIcon);
+    trashIcon.textContent = "delete";
+    trashIcon.classList.add("material-symbols-outlined");
+
     removeBook.addEventListener("click", (e) => {
         const myId = e.target.getAttribute("data-id");
         myLibrary = myLibrary.filter((item) => item.id !== myId);
@@ -85,9 +90,14 @@ function displayBooks(libraryArray) {
 
     const readBook = document.createElement("button");
     bookCard.appendChild(readBook);
-    readBook.textContent = "Read/Unread"
     readBook.classList.add("read-button");
     readBook.setAttribute("data-id", book.id)
+
+    const bookIcon = document.createElement("span");
+    bookIcon.textContent = "auto_stories";
+    bookIcon.classList.add("material-symbols-outlined");
+    readBook.appendChild(bookIcon);
+
     readBook.addEventListener("click", (e) => {
         const myId = e.target.getAttribute("data-id");
         const myBook = myLibrary.find((element) => element.id == myId);
