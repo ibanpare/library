@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -78,13 +78,9 @@ function displayBooks(libraryArray) {
     removeBook.setAttribute("data-id", book.id)
     removeBook.addEventListener("click", (e) => {
         const myId = e.target.getAttribute("data-id");
-        myLibrary.forEach((item)=> {
-            if(item.id == myId) {
-                myLibrary.pop(item);
-                cleanLibrary()
-                displayBooks()
-            }
-        })
+        myLibrary = myLibrary.filter((item) => item.id !== myId);
+        cleanLibrary();
+        displayBooks();
     })
 
     const readBook = document.createElement("button");
