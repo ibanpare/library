@@ -79,6 +79,7 @@ function displayBooks(libraryArray) {
     const trashIcon = document.createElement("span");
     removeBook.appendChild(trashIcon);
     trashIcon.textContent = "delete";
+    trashIcon.setAttribute("data-id", book.id)
     trashIcon.classList.add("material-symbols-outlined");
 
     removeBook.addEventListener("click", (e) => {
@@ -96,6 +97,7 @@ function displayBooks(libraryArray) {
     const bookIcon = document.createElement("span");
     bookIcon.textContent = "auto_stories";
     bookIcon.classList.add("material-symbols-outlined");
+    bookIcon.setAttribute("data-id", book.id)
     readBook.appendChild(bookIcon);
 
     readBook.addEventListener("click", (e) => {
